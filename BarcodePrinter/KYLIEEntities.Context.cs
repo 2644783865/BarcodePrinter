@@ -26,5 +26,6 @@ namespace BarcodePrinter
         }
     
         public virtual DbSet<SCAN_BarcodeCount> SCAN_BarcodeCount { get; set; }
+        public virtual DbSet<Job> Jobs { get; set; }
     }
 }

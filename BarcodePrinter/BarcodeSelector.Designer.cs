@@ -55,7 +55,20 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbAssemblyType.Properties.Items.AddRange(new object[] {
             "D6 Root",
-            "D9 Root"});
+            "D9 Root",
+            "D9 4 Exit Multibase Root",
+            "12 Bolt Root Section 4 Exit",
+            "Planted Root",
+            "8 Bolt Pad",
+            "12 Bolt Pad",
+            "Cantilever Root",
+            "6 to 8 hole spool piece for deep cast root Version 2",
+            "8 to 8 hole spool piece for deep cast root",
+            "6 to 8 Hole Adapter Plate",
+            "T Range headframe",
+            "Elara / S Range / Phase 5 headframe",
+            "Alpha Flagpole antennas adaptor",
+            "Alpha Streetworks Headframe"});
             this.cbAssemblyType.Size = new System.Drawing.Size(261, 32);
             this.cbAssemblyType.TabIndex = 1;
             // 

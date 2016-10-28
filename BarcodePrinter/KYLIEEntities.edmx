@@ -5,6 +5,34 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="KYLIEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Jobs">
+          <Key>
+            <PropertyRef Name="JobNumber_PK" />
+          </Key>
+          <Property Name="JobNumber_PK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contract_ID" Type="int" Nullable="false" />
+          <Property Name="JobTitle" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="DateIssed" Type="date" Nullable="false" />
+          <Property Name="Product_ID" Type="int" Nullable="false" />
+          <Property Name="ProductQuantity" Type="int" />
+          <Property Name="JobAssigned" Type="int" />
+          <Property Name="Client_FK" Type="int" />
+          <Property Name="SubContract_FK" Type="int" />
+          <Property Name="SubJob" Type="int" />
+          <Property Name="PrimaryJobKey" Type="int" />
+          <Property Name="HasSubs" Type="int" />
+          <Property Name="TakenOutBy" Type="int" />
+          <Property Name="ManJobListArray" Type="nvarchar" MaxLength="256" />
+          <Property Name="WorkshopScheduleComments" Type="nvarchar(max)" />
+          <Property Name="TargetCostComments" Type="nvarchar(max)" />
+          <Property Name="HasTurbineManBatchNumber" Type="int" />
+          <Property Name="ManuPurchaseComplete" Type="int" />
+          <Property Name="StockLeft" Type="int" />
+          <Property Name="BoughtInForStock" Type="int" />
+          <Property Name="PeteBurns" Type="int" />
+          <Property Name="WorkshopScheduleOneNotePageID" Type="nvarchar" MaxLength="256" />
+        </EntityType>
         <EntityType Name="SCAN_BarcodeCount">
           <Key>
             <PropertyRef Name="ID" />
@@ -13,6 +41,7 @@
           <Property Name="ID" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="KYLIEModelStoreContainer">
+          <EntitySet Name="Jobs" EntityType="Self.Jobs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SCAN_BarcodeCount" EntityType="Self.SCAN_BarcodeCount" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -21,6 +50,7 @@
       <Schema Namespace="KYLIEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="KYLIEEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="SCAN_BarcodeCount" EntityType="KYLIEModel.SCAN_BarcodeCount" />
+          <EntitySet Name="Jobs" EntityType="KYLIEModel.Job" />
         </EntityContainer>
         <EntityType Name="SCAN_BarcodeCount">
           <Key>
@@ -28,6 +58,34 @@
           </Key>
           <Property Name="currentID" Type="Int32" Nullable="false" />
           <Property Name="ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="JobNumber_PK" />
+          </Key>
+          <Property Name="JobNumber_PK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contract_ID" Type="Int32" Nullable="false" />
+          <Property Name="JobTitle" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="DateIssed" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Product_ID" Type="Int32" Nullable="false" />
+          <Property Name="ProductQuantity" Type="Int32" />
+          <Property Name="JobAssigned" Type="Int32" />
+          <Property Name="Client_FK" Type="Int32" />
+          <Property Name="SubContract_FK" Type="Int32" />
+          <Property Name="SubJob" Type="Int32" />
+          <Property Name="PrimaryJobKey" Type="Int32" />
+          <Property Name="HasSubs" Type="Int32" />
+          <Property Name="TakenOutBy" Type="Int32" />
+          <Property Name="ManJobListArray" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="WorkshopScheduleComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TargetCostComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HasTurbineManBatchNumber" Type="Int32" />
+          <Property Name="ManuPurchaseComplete" Type="Int32" />
+          <Property Name="StockLeft" Type="Int32" />
+          <Property Name="BoughtInForStock" Type="Int32" />
+          <Property Name="PeteBurns" Type="Int32" />
+          <Property Name="WorkshopScheduleOneNotePageID" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -40,6 +98,35 @@
               <MappingFragment StoreEntitySet="SCAN_BarcodeCount">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="currentID" ColumnName="currentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jobs">
+            <EntityTypeMapping TypeName="KYLIEModel.Job">
+              <MappingFragment StoreEntitySet="Jobs">
+                <ScalarProperty Name="WorkshopScheduleOneNotePageID" ColumnName="WorkshopScheduleOneNotePageID" />
+                <ScalarProperty Name="PeteBurns" ColumnName="PeteBurns" />
+                <ScalarProperty Name="BoughtInForStock" ColumnName="BoughtInForStock" />
+                <ScalarProperty Name="StockLeft" ColumnName="StockLeft" />
+                <ScalarProperty Name="ManuPurchaseComplete" ColumnName="ManuPurchaseComplete" />
+                <ScalarProperty Name="HasTurbineManBatchNumber" ColumnName="HasTurbineManBatchNumber" />
+                <ScalarProperty Name="TargetCostComments" ColumnName="TargetCostComments" />
+                <ScalarProperty Name="WorkshopScheduleComments" ColumnName="WorkshopScheduleComments" />
+                <ScalarProperty Name="ManJobListArray" ColumnName="ManJobListArray" />
+                <ScalarProperty Name="TakenOutBy" ColumnName="TakenOutBy" />
+                <ScalarProperty Name="HasSubs" ColumnName="HasSubs" />
+                <ScalarProperty Name="PrimaryJobKey" ColumnName="PrimaryJobKey" />
+                <ScalarProperty Name="SubJob" ColumnName="SubJob" />
+                <ScalarProperty Name="SubContract_FK" ColumnName="SubContract_FK" />
+                <ScalarProperty Name="Client_FK" ColumnName="Client_FK" />
+                <ScalarProperty Name="JobAssigned" ColumnName="JobAssigned" />
+                <ScalarProperty Name="ProductQuantity" ColumnName="ProductQuantity" />
+                <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+                <ScalarProperty Name="DateIssed" ColumnName="DateIssed" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="Contract_ID" ColumnName="Contract_ID" />
+                <ScalarProperty Name="JobNumber" ColumnName="JobNumber" />
+                <ScalarProperty Name="JobNumber_PK" ColumnName="JobNumber_PK" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="91a313aa0aaa4e77881d79715062e832" Name="Diagram1">
         <EntityTypeShape EntityType="KYLIEModel.SCAN_BarcodeCount" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="KYLIEModel.Job" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

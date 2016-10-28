@@ -66,6 +66,7 @@
             this.pdfFormDataBarPageGroup1 = new DevExpress.XtraPdfViewer.Bars.PdfFormDataBarPageGroup();
             this.pdfBarController1 = new DevExpress.XtraPdfViewer.Bars.PdfBarController();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.barGenerateJobCode = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pdfBarController1)).BeginInit();
             this.SuspendLayout();
@@ -108,9 +109,10 @@
             this.pdfSetFitVisibleZoomModeCheckItem1,
             this.pdfExportFormDataBarItem1,
             this.pdfImportFormDataBarItem1,
-            this.barButtonItemGenerateCodes});
+            this.barButtonItemGenerateCodes,
+            this.barGenerateJobCode});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 2;
+            this.ribbonControl1.MaxItemId = 3;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.pdfRibbonPage1,
@@ -267,7 +269,7 @@
             // 
             // barButtonItemGenerateCodes
             // 
-            this.barButtonItemGenerateCodes.Caption = "Generate Codes";
+            this.barButtonItemGenerateCodes.Caption = "Generate Assembly Codes";
             this.barButtonItemGenerateCodes.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItemGenerateCodes.Glyph")));
             this.barButtonItemGenerateCodes.Id = 1;
             this.barButtonItemGenerateCodes.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItemGenerateCodes.LargeGlyph")));
@@ -285,6 +287,7 @@
             // pdfFileRibbonPageGroup1
             // 
             this.pdfFileRibbonPageGroup1.ItemLinks.Add(this.barButtonItemGenerateCodes);
+            this.pdfFileRibbonPageGroup1.ItemLinks.Add(this.barGenerateJobCode);
             this.pdfFileRibbonPageGroup1.ItemLinks.Add(this.pdfFileOpenBarItem1);
             this.pdfFileRibbonPageGroup1.ItemLinks.Add(this.pdfFileSaveAsBarItem1);
             this.pdfFileRibbonPageGroup1.ItemLinks.Add(this.pdfFilePrintBarItem1);
@@ -350,6 +353,15 @@
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
             // 
+            // barGenerateJobCode
+            // 
+            this.barGenerateJobCode.Caption = "Generate Pole Template";
+            this.barGenerateJobCode.Glyph = ((System.Drawing.Image)(resources.GetObject("barGenerateJobCode.Glyph")));
+            this.barGenerateJobCode.Id = 2;
+            this.barGenerateJobCode.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barGenerateJobCode.LargeGlyph")));
+            this.barGenerateJobCode.Name = "barGenerateJobCode";
+            this.barGenerateJobCode.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barGenerateJobCode_ItemClick);
+            // 
             // Printer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -407,5 +419,6 @@
         private DevExpress.XtraPdfViewer.Bars.PdfBarController pdfBarController1;
         private DevExpress.XtraBars.BarButtonItem barButtonItemGenerateCodes;
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
+        private DevExpress.XtraBars.BarButtonItem barGenerateJobCode;
     }
 }
